@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body{
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Hidden by default */
+    #burger-menu-links {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      width: 100%;
+      background-color: #bda95b;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    /* Animation for showing */
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    /* Animation for hiding */
+    @keyframes slideOut {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* Show the dropdown menu */
+    #burger-menu-links.show {
+      display: block;
+      animation: slideIn 0.5s forwards;
+    }
+
+    /* Hide the dropdown menu */
+    #burger-menu-links.hide {
+      display: block; /* Ensure the menu is visible before applying the animation */
+      animation: slideOut 0.5s forwards; /* Apply the slideOut animation */
+    }
+
+    /* Ensure the burger icon is visible during animation */
+    #burger-menu {
+      position: relative;
+      z-index: 11;
+    }
+  </style>
+
+</head>
+<body class="bg-[#fffefa] text-gray-800 overflow-x-hidden">
+
+  <header class="bg-[#fffefa] py-6">
+    <div class="flex justify-between items-center mx-6 md:mx-8 lg:mx-10">
+      <div class="flex-grow text-center lg:transform ml-[35%] md:ml-[35%] lg:ml-[40%]">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1564793209998-HT4V8J383MOR2UOKPEAE/YangsKitchen_Logo_DARK.png?format=1500w" 
+        alt="" class="w-[55%] md:w-[45%] lg:w-[40%] h-auto">
+      </div>
+      
+      <div class="block lg:hidden">
+        <button id="burger-menu" class="text-gray-800 focus:outline-none">
+          <i class="fa fa-bars text-3xl"></i>
+        </button>
+      </div>
+
+      <div id="nav-links" class="hidden lg:flex flex-col text-sm md:text-base lg:text-lg text-right space-y-2 ml-auto lg:transform lg:translate-x-[-50%] xl:translate-x-[-75%]">
+        <a href="#" class="text-gray-800 underline hover:underline whitespace-nowrap">1 VIEW OUR MENU</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a>
+        </div>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a>
+        </div>
+        <a href="./contact.html" class="text-gray-800 hover:underline whitespace-nowrap">8 CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hidden div component for burger menu -->
+  <div id="burger-menu-links" class="hidden absolute shadow-md px-4 mt-[-6%] right-0 p-10 pl-10 w-[100%] h-[100vh] bg-[#bda95b] transition-transform duration-300 transform translate-x-full">
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap underline">1 VIEW OUR MENU</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a><br>
+    <a href="./contact.html" class="text-gray-800 hover:underline whitespace-nowrap">8 CONTACT US</a><br>
+  </div>
+
+  <div class="flex justify-center m-20"> 
+    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 place-items-center">
+        <a href="./menu.html" class="text-sm md:text-base lg:text-lg text-balance hover:underline">BRUNCH</a>
+        <a href="./dinner.html" class="text-sm md:text-base lg:text-lg text-balance hover:underline">DINNER</a>
+        <a href="./beverages.html" class="text-sm md:text-base lg:text-lg text-balance hover:underline">BEVERAGES</a>
+        <a href="#" class="text-sm md:text-base lg:text-lg text-balance underline hover:underline">COCKTAILS/BEER/SAKE/WINE</a>
+    </div>
+  </div>
+
+  <h1 class="text-center text-lg md:text-xl lg:text-2xl">Specialty Cocktails</h1>
+
+  <div class="flex justify-center lg:pl-[13%] lg:pr-48">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Don't Be Salty    
+            <span class="text-base md:text-lg lg:text-xl font-light ml-16">*NONALC available*</span></h1>
+            <p>Preserved meyer lemon, meyer lemon juice, <br>
+                honey, sparkling wine, Heiwa lemon sake float</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Oolong Spritz</h1>
+            <p>Refreshing, made with our Oolong Fresca base, <br>
+                 sparkling wine, and organic mint.</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold"></h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Market Mimosa</h1>
+            <p>Farmer's Market fresh-squeezed orange juice <br>
+                and sparkling wine.</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Yuzu Martini</h1>
+            <p>shochu, yuzu bitters, yuzu juice, sake, Bermutto <br>
+                vermouth</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold"></h1>
+            <p></p>
+        </div>
+
+    </div>
+  </div>
+
+  <h1 class="text-center text-lg md:text-xl lg:text-2xl mt-40">Beers</h1>
+
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Craftsman 1903 Lager</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Ohana Seasonal IPA</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold"></h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Craftsman Peachy Keen</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Highland Park Brewery Timbo Pils</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold"></h1>
+            <p></p>
+        </div>
+
+    </div>
+  </div>
+
+  <h1 class="text-center text-lg md:text-xl lg:text-2xl mt-40">Sake</h1>
+
+  <div class="flex justify-center lg:pl-[13%] lg:pr-48">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Akabu Junmai Ginjo</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Heiwa Tsuru-ume Lemon</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Mukai 'Ine Mankai' Junmai Genshu</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Heiwa "Kid" Junmai</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Kirei 'Mannen' Junmai Daiginjo Nama Genshu</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Ohmine '3 Grain' Yamadanishiki Junmai Daiginjo</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Heiwa "Kid" Junmai Daiginjo Sparkling Nama Nigori</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Kodama Jozo Chogetsu "Clear Moon" Junmai Ginjo</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Yasui 'Taro' 2021 Junmai Kimoto</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Heiwa Tsuru-ume Kanjuku Plum</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Kuheiji 'Eau Du Desir' 2022 Junmai Daiginjo</h1>
+            <p></p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold"></h1>
+            <p></p>
+        </div>
+
+    </div>
+  </div>
+
+  <h1 class="text-center text-lg md:text-xl lg:text-2xl mt-40">Wines By The Glass</h1>
+
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Sparkling</h1>
+            <p class="italic text-zinc-500">Raventós i Blanc Blanc de Blancs 2021</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Skin Contact</h1>
+            <p class="italic text-zinc-500">Giornata 'Orangotango' 2023 <br>
+                Arnot-Roberts Rosé 2022</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Dessert</h1>
+            <p class="italic text-zinc-500">Samuel Tinon '5 Puttonyos' Tokaji Aszú</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">White</h1>
+            <p class="italic text-zinc-500">Apátsági Hárslevelü 2019 <br>
+                Tyler Santa Barbara County 2022</p>
+        </div>
+        
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Red</h1>
+            <p class="italic text-zinc-500">Marcel Lapierre 'Raisins Gaulois' 2023 <br>
+                Lúuma Cabernet Sauvignon 2022</p>
+        </div>
+
+        <div class="m-10">
+            <h1 class="text-base md:text-lg lg:text-xl font-bold">Wine Nights on Fri, Sat, and Sun!</h1>
+            <p class="italic text-zinc-500"></p>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="mt-10 p-12 md:p-14 lg:p-16">
+    <h1 class="text-center text-lg md:text-2xl lg:text-3xl">Wine By The Bottle</h1>
+    <p class="text-center text-xs md:text-sm lg:text-base">Please ask our servers for the full bottle list. Corkage Policy: $25 per bottle, $50 for 1.5L bottles. We’ll waive one $25 corkage fee for each bottle you purchase from our list (dine-in only). Corkage will be full price <br>
+        for any bottles that we have on our list.</p>
+    </div>
+
+  <footer class="mt-20 m-10 mb-16 lg:pl-20 lg:pr-20">
+    <h1 class="text-sm md:text-base lg:text-lg text-center text-balance font-medium">YANG'S KITCHEN 112 West Main Street, Alhambra, CA, 91801, United States 6262811035 hello@yangskitchenla.com</h1>
+  </footer>
+
+  <script>
+    // JavaScript to toggle burger menu
+    document.getElementById('burger-menu').addEventListener('click', function() {
+        var menuLinks = document.getElementById('burger-menu-links');
+        if (menuLinks.classList.contains('show')) {
+          menuLinks.classList.remove('show');
+          menuLinks.classList.add('hide');
+          setTimeout(() => menuLinks.classList.remove('hide'), 500);
+        } else {
+          menuLinks.classList.add('show');
+        }
+      });
+  </script>
+    
+</body>
+</html>

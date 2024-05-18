@@ -1,0 +1,483 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body{
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Hidden by default */
+    #burger-menu-links {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      width: 100%;
+      background-color: #bda95b;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    /* Animation for showing */
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    /* Animation for hiding */
+    @keyframes slideOut {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* Show the dropdown menu */
+    #burger-menu-links.show {
+      display: block;
+      animation: slideIn 0.5s forwards;
+    }
+
+    /* Hide the dropdown menu */
+    #burger-menu-links.hide {
+      display: block; /* Ensure the menu is visible before applying the animation */
+      animation: slideOut 0.5s forwards; /* Apply the slideOut animation */
+    }
+
+    /* Ensure the burger icon is visible during animation */
+    #burger-menu {
+      position: relative;
+      z-index: 11;
+    }
+  </style>
+
+</head>
+<body class="bg-[#fffefa] text-gray-800 overflow-x-hidden">
+
+  <header class="bg-[#fffefa] py-6">
+    <div class="flex justify-between items-center mx-6 md:mx-8 lg:mx-10">
+      <div class="flex-grow text-center lg:transform ml-[35%] md:ml-[35%] lg:ml-[40%]">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1564793209998-HT4V8J383MOR2UOKPEAE/YangsKitchen_Logo_DARK.png?format=1500w" 
+        alt="" class="w-[55%] md:w-[45%] lg:w-[40%] h-auto">
+      </div>
+      
+      <div class="block lg:hidden">
+        <button id="burger-menu" class="text-gray-800 focus:outline-none">
+          <i class="fa fa-bars text-3xl"></i>
+        </button>
+      </div>
+
+      <div id="nav-links" class="hidden lg:flex flex-col text-sm md:text-base lg:text-lg text-right space-y-2 ml-auto lg:transform lg:translate-x-[-50%] xl:translate-x-[-75%]">
+        <a href="./menu.html" class="text-gray-800 hover:underline whitespace-nowrap">1 VIEW OUR MENU</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a>
+        </div>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a>
+        </div>
+        <a href="./contact.html" class="text-gray-800 hover:underline whitespace-nowrap">8 CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hidden div component for burger menu -->
+  <div id="burger-menu-links" class="hidden absolute shadow-md px-4 mt-[-6%] right-0 p-10 pl-10 w-[100%] h-[1300%] bg-[#bda95b] transition-transform duration-300 transform translate-x-full">
+    <a href="./menu.html" class="text-gray-800 hover:underline whitespace-nowrap">1 VIEW OUR MENU</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a><br>
+    <a href="./contact.html" class="text-gray-800 hover:underline whitespace-nowrap">8 CONTACT US</a><br>
+  </div>
+
+  <div class="flex justify-center mt-0 md:mt-0 lg:mt-5">
+    <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566868990918-JPJBFE44OW13OFILDIOM/yangskitchen_home.jpg?format=2500w" 
+    alt="Yang's Kitchen Interior" class="w-[90%] md:w-[90%] lg:w-[70%] h-auto">
+  </div>
+
+    <div class="py-6 md:py-8 lg:py-10">
+
+        <div class="m-6 md:m-8 lg:m-10">
+            <h1 class="text-sm md:text-base lg:text-lg font-bold text-center">BURGER NIGHTS ON THE 1ST AND 3RD MONDAY OF EACH MONTH!</h1>
+        </div>
+
+        <div class="mt-[-1%]">
+            <h1 class="text-sm md:text-base lg:text-lg text-center text-balance pr-7 pl-7">We are hosting another Burger Night on Monday 5/20/24 from 5:00pm - 9:00pm.
+                 Reservations recommended <br> on Yelp! (5:00pm - 8:30pm slots available), and we will accept as many walk-ins as we can! Delicious burgers <br> made from premium ingredients, 
+                 wine and oyster specials, and more! Don’t miss out!</h1>
+        </div>
+
+        <div class="m-6 md:m-8 lg:m-10">
+            <h1 class="text-sm md:text-base lg:text-lg font-bold text-center">DINNER RESERVATIONS!</h1>
+        </div>
+
+        <div class="mt-[-1%]">
+            <h1 class="text-sm md:text-base lg:text-lg text-center pr-7 pl-7">We are now open for dinner service Thursday through Sunday! We’ll be accepting limited walk-ins and <br> 
+                <span class="underline cursor-pointer hover:text-gray-500 text-balance">reservations</span> on Yelp. <br><br> 
+                For brunch, we still do not take reservations as we seat guests on a first come first serve basis. However, you <br> can join our Yelp! Waitlist to save your spot ahead of time (same day only)!</h1>
+        </div>
+
+        <div class="m-6 md:m-8 lg:m-10">
+            <h1 class="text-sm md:text-base lg:text-lg font-bold text-center">PARKING INFO</h1>
+        </div>
+
+        <div class="mt-[-1%]">
+            <h1 class="text-sm md:text-base lg:text-lg text-center text-balance pr-7 pl-7"> <span class="font-bold">DO NOT park in Rick’s parking lot</span> - they <span class="font-bold">WILL TOW</span> at all times of the day! The open parking lot directly <br>
+                 behind our restaurant has 2 hour free parking, or is free after 5:00PM. Nearby, South and North of Main St on <br>
+                  1st St, there are two parking structures with 4 hour free parking.</h1>
+        </div>
+
+        <div class="m-6 md:m-8 lg:m-10">
+            <h1 class="text-sm md:text-base lg:text-lg font-bold text-center">BUSINESS HOURS</h1>
+        </div>
+
+        <div class="mt-[-1%]">
+            <h1 class="text-sm md:text-base lg:text-lg text-center pr-7 pl-7"> BRUNCH: Thursday through Monday 9:00am - 2:30pm <br><br>
+
+                DINNER: Thursday & Sunday 5:00pm - 9:00pm <br><br> 
+                
+                Friday & Saturday 5:00pm - 10:00pm <br><br>
+                
+                CLOSED Tuesdays & Wednesdays <br><br> 
+                
+                Dine-in, takeout, and delivery (via DoorDash & UberEats) available</h1>
+        </div>
+
+        <div class="flex justify-center py-2 md:py-4 lg:py-20 mb-5 md:mb-5 lg:mb-[-2%] mt-5 md:mt-5 lg:mt-[-2%]">
+            <div class="w-auto md:w-auto lg:w-[16%] text-center border-[2px] border-zinc-900 p-4 md:p-6 lg:p-8 cursor-pointer hover:bg-zinc-900 hover:text-white transition-all duration-300">
+                <button class="font-bold whitespace-nowrap text-balance text-sm md:text-base lg:text-lg">ORDER ONLINE</button>
+            </div>
+        </div>    
+        
+        <div class="flex justify-center lg:mt-0">
+            <div class="w-auto md:w-auto lg:w-[35%] text-center border-[2px] border-zinc-900 p-4 md:p-6 lg:p-8 cursor-pointer hover:bg-zinc-900 hover:text-white transition-all duration-300">
+                <button class="font-bold whitespace-nowrap text-balance text-sm md:text-base lg:text-lg">CAREERS - SEND US A RESUME / SHORT MESSAGE!</button>
+            </div>
+        </div> 
+
+    </div>
+
+    <div class="flex justify-center mt-20 md:mt-16 lg:mt-10 m-6 md:m-8 lg:m-10">
+      <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1609787073062-88E5P38MXHSFU0DQC333/ZeroFoodprint.Logo.2020_Deep_Cyan.png?format=2500w" 
+      alt="Yang's Kitchen Interior" class="w-[50%] md:w-[30%] lg:w-[13%] h-auto">
+    </div>
+
+    <div class="m-6 md:m-8 lg:m-10">
+      <h1 class="text-sm md:text-base lg:text-lg text-center">WE ARE A PROUD MEMBER OF ZERO <span class="underline cursor-pointer hover:text-gray-500">FOODPRINT</span> </h1>
+    </div>
+
+    <div class="flex justify-center p-6 md:p-8 lg:p-32 gap-x-60 mt-20 md:mt-20 lg:mt-0">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+
+        <div class="mb-10 md:mb-0 lg:mb-0">
+          <h1 class="text-2xl md:text-2xl lg:text-3xl text-center font-bold" style="font-family: 'Courier New', Courier, monospace;">LOCATION</h1>
+          <p class="text-center p-2 md:p-4 lg:p-6">112 W Main St. <br>
+            Alhambra, CA 91801</p>
+        </div>
+
+        <div class="mb-10 md:mb-0 lg:mb-0">
+          <h1 class="text-2xl md:text-2xl lg:text-3xl text-center font-bold" style="font-family: 'Courier New', Courier, monospace;">HOURS</h1>
+          <p class="text-center p-2 md:p-4 lg:p-6">Brunch: Thursday - Monday, 9am to 2:30pm <br><br> 
+
+            Dinner: Thursday & Sunday, 5pm to 9pm <br><br>
+            
+            Friday & Saturday, 5pm to 10pm <br><br>
+            
+            Closed Tuesdays & Wednesdays</p>
+        </div>
+
+        <div class="mb-10 md:mb-0 lg:mb-0">
+          <h1 class="text-2xl md:text-2xl lg:text-3  xl text-center font-bold" style="font-family: 'Courier New', Courier, monospace;">CONTACT</h1>
+          <p class="text-center p-2 md:p-4 lg:p-6"> <span class="underline cursor-pointer hover:text-gray-500">(626) 281-1035</span> <br>
+          <span class="underline cursor-pointer hover:text-gray-500">Alhambra, CA 91801</span></p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-items-center m-[10%] mt-[-3%] md:mt-10 lg:mt-0">
+      
+      <div class="lg:translate-y-[-25%] lg:translate-x-[4%] mb-10 md:mb-0 lg:mb-0">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566963493871-ETXLCH49FLZUB3A0Y1QT/yangskitchen_01.png?format=1000w" 
+        alt="" class="w-[100%] md:w-[100%] lg:w-[95%] h-auto">
+        <p class="text-start">Images shot on location at Yang's Kitchen</p>
+      </div>
+
+      <div class="lg:translate-x-[15%] lg:translate-y-[-3%] mb-10 md:mb-0 lg:mb-0">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566964014153-2JAH31CL236V51TSY4SW/yangskitchen_02.png?format=1000w" 
+        alt="" class="w-[100%] md:w-[100%] lg:w-[85%] h-auto">
+      </div>
+
+      <div class="lg:translate-x-[10%] lg:translate-y-[-10%] mb-10 md:mb-0 lg:mb-0">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1567211236536-2J8GFZCSFGORYJYOKK60/emblem-green-02-02.png?format=750w" 
+        alt="" class="w-[100%] md:w-[100%] lg:w-[85%] h-auto">
+      </div>
+
+      <div class="lg:translate-x-[-10%] lg:translate-y-10 mb-10 md:mb-0 lg:mb-0">
+        <p>Yang’s Kitchen strives to source local, sustainable and organic when<br>
+           possible. We work hard to source premium ingredients and we cook<br>
+            everything from scratch with love. We also do our best to pay our<br>
+             employees living wages (tips are shared with all employees, including<br>
+              kitchen staff) and to reduce our environmental footprint wherever we<br>
+               can. Overall, these factors translate to higher menu prices, but we hope<br>
+                that you find value and feel a sense of comfort in knowing that we aim<br>
+                 to get better everyday at doing what is important to us.</p>
+      </div>
+
+    </div>
+
+    <div class="flex justify-center mt-0 md:mt-0 lg:mt-5 mb-5 md:mb-5 lg:mb-10">
+      <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1619135748199-I56FXBEVWXC1QXGK17BZ/Apr+11+2021DSC07442.jpg?format=2500w" 
+      alt="Yang's Kitchen Interior" class="w-[90%] md:w-[90%] lg:w-[70%] h-auto">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5">
+
+      <div class="mb-10 md:mb-0 lg:mb-10 mt-20 md:mt-10 lg:mt-20">
+        <h1 class="text-3xl md:text-2xl lg:text-3xl text-start lg:text-center font-bold mb-5 " style="font-family: 'Courier New', Courier, monospace;">LOCATION</h1>
+        <p class="text-start lg:text-center p-2 md:p-4 lg:p-6">112 W Main St. <br>
+          Alhambra, CA 91801</p>
+      </div>
+
+      <div class="mb-10 md:mb-0 lg:mb-10 md:mt-10 lg:mt-20">
+        <p class="text-start p-2 md:p-4 lg:p-6">Here are directions to our location. <br>
+          We hope to see you soon! <br><br>
+          
+          Get Directions <br><br>
+          
+          Parking Information</p>
+      </div>
+
+    </div>
+
+    <!-- Map -->
+    <div class="flex justify-center mt-10 m-10">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.633442014836!2d-118.12887308523297!3d34.093079520236066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c70b16fc86d9%3A0x7eb891b69798d4f0!2sYang's%20Kitchen!5e0!3m2!1sen!2sus!4v1621258551577!5m2!1sen!2sus"
+       width="1320" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 place-items-center m-10 mt-40">
+      <h1 class="text-start text-3xl" style="font-family: 'Courier New', Courier, monospace;">AS SEEN IN…</h1>
+    </div>
+
+    <div class="flex justify-center mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-10 md:m-0 lg:m-0 lg:pl-[20%] lg:pr-[20%]">
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577749875455-6J80R425ZGKIUI2FD13Y/timeoutpng.png?format=750w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="m-5 pl-5 whitespace-nowrap"><span class="underline cursor-pointer hover:text-gray-500 lg:text-balance">“The 40 best restaurants <br>
+           in Los Angeles you need  <br>
+            to try”</span> <br><br>
+
+        <span class="underline cursor-pointer hover:text-gray-500 lg:text-balance">Dinner Review <br>
+           (July 2023)</span><br><br>
+          
+          <span class="underline cursor-pointer hover:text-gray-500 lg:text-balance">”The 15 best new Los <br>
+           Angeles restaurants of <br>
+            2019”</span></p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577750103560-KCI379MTT1ORGMVC5CDN/lamag-01.png?format=750w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="underline whitespace-nowrap cursor-pointer pl-5 md:pl-10 lg:pl-5 hover:text-gray-500 lg:text-balance">“L.A.’s 10 Best <br> 
+          New Restaurants of 2019”</p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577750357993-S050IDBXKM1XGMCP5H8B/infatuation-01.png?format=750w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="pl-5 md:pl-10 lg:pl-5"><span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">Restaurant Review (Feb <br>
+           2023)</span> <br><br>
+
+          <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“LA’s Best New <br> Restaurants of 2019”</span></p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577750612988-1G05VKNIBIL2C6O55EKE/ktla5-01.png?format=750w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="pl-5 md:pl-10 lg:pl-5 underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“Best New Restaurants in <br> L.A. 2019 With ‘The <br> Infatuation’”</p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577752105619-34JE05H0DZVOMST44AFX/latimes-01.png?format=500w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="pl-5 md:pl-10 lg:pl-5"><span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">"101 Best LA Restaurants <br> 2023"</span><br><br>
+
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">Tasting Notes (April <br> 2023)</span><br><br>
+          
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“101 Best LA <br> Restaurants 2022”</span><br><br>
+          
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“101 Best LA <br> Restaurants 2021”</span><br><br>
+          
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">"101 Best LA Restaurants <br> 2020"</span><br><br>
+          
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">Restaurant Review (Oct <br> 2019)</span><br><br>
+          
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“L.A.’s 15 best dishes of <br> 2019”</span></p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577750846324-A6SUD9RG4IUGWBCEQUH9/laeater-01.png?format=500w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="pl-5 md:pl-10 lg:pl-5"><span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“SGV Darling Yang’s <br> Kitchen Cleverly Riffs on <br> Iconic Chinese Dishes <br> With New Dinner Service”</span> <br><br>
+
+          <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">"Celebrated Alhambra <br> Restaurant Yang’s <br> Kitchen Is Back In Action <br> After a Long Hiatus"</span> <br><br>
+          
+          <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“Yang’s Kitchen Is <br> Redefining Chinese <br> Cooking in the San <br> Gabriel Valley”</span> <br><br> 
+          
+          <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">Eater Awards 2019 <br><br>
+          
+          <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“16 Most Important Los <br> Angeles Restaurant <br> Openings in 2019”</span></p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1577751957525-CUCLB0X37NRKZDY66EA5/bonappetit-01.png?format=500w" 
+        alt="" class="w-full h-auto mb-5">
+        <p class="pl-5 md:pl-10 lg:pl-5 underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">“The 24 Restaurants We <br> Couldn’t Stop Talking <br> About in 2019”</p>
+      </div>
+
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/02a328c4-5a0f-4845-ae50-fa8e37062383/tasting+table+logo.jpeg?format=500w" 
+        alt="" class="w-full h-auto mb-5 lg:mt-[-29%]">
+        <p class="pl-5 md:pl-10 lg:pl-5 underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">"20 Best Restaurants In <br> Los Angeles, Ranked" <br> (March 2023)</p>
+      </div>
+    
+      <div class="mt-28 md:mt-32 lg:mt-32">
+        <h1 class="pl-5 md:pl-10 lg:pl-5 text-3xl md:text-2xl lg:text-3xl whitespace-nowrap lg:text-balance font-medium" style="font-family: 'Courier New', Courier, monospace;">SOCIAL MEDIA</h1>
+      </div>
+
+      <div class="mt-6 md:mt-32 lg:mt-32 mb-5">
+        <p class="pl-5 lg:whitespace-nowrap">Follow us for featured menu items and restaurant updates! <br><br>
+
+        <span class="underline cursor-pointer hover:text-gray-500 whitespace-nowrap lg:text-balance">Instagram</span></p>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="flex justify-center items-center h-screen mt-[-50%] md:mt-[-10%] lg:mt-0">
+      <main class="grid h-[50%] md:h-[80%] lg:h-[80%]">
+          <div x-data="imageSlider" class="relative mx-auto overflow-hidden rounded-md">
+              <div class="absolute right-8 top-8 z-10 rounded-full bg-gray-800 m-5 px-3 text-center text-lg text-white">
+                  <span x-text="currentIndex"></span>/<span x-text="images.length"></span>
+              </div>
+      
+              <button @click="previous()" class="absolute left-10 md:left-12 lg:left-14 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-gray-100 shadow-md">
+                  <i class="fas fa-arrow-left text-3xl font-bold text-gray-500"></i>
+              </button>
+      
+              <button @click="forward()" class="absolute right-10 md:right-12 lg:right-14 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-gray-100 shadow-md">
+                  <i class="fas fa-arrow-right text-3xl font-bold text-gray-500"></i>
+              </button>
+      
+              <div class="relative h-96 md:h-full lg:h-full w-[25rem] md:w-[40rem] lg:w-[50rem]">
+                  <template x-for="(image, index) in images">
+                      <div x-show="currentIndex == index + 1" x-transition:enter="transition transform duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition transform duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute top-0">
+                          <img :src="image" alt="image" class="rounded-md"/>
+                      </div>
+                  </template>
+              </div>
+          </div>
+      </main>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 place-items-center m-10 md:pl-[4%] lg:pl-[14%] md:pr-[4%] lg:pr-[8.5%] gap-10 md:gap-10 lg:gap-0 mt-[-30%] md:mt-[-5%] lg:mt-0">
+        <div>
+            <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566969629497-O0TBF6EOQ7TEJI3B1857/yangskitchen_gallery-01.png?format=500w" alt=""
+                class="w-[100%] md:w-[100%] lg:w-[75%] h-auto">
+        </div>
+        <div>
+            <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566969701220-EL03IRBN1SJ9NLSMVA0B/yangskitchen_gallery-02.png?format=300w" alt=""
+                class="w-[100%] md:w-[100%] lg:w-[75%] h-auto">
+        </div>
+        <div>
+            <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566969844624-8JWNJQZEYC7AD8RIMDY7/yangskitchen_gallery-03.png?format=500w" alt=""
+                class="w-[100%] md:w-[100%] lg:w-[75%] h-auto">
+        </div>
+        <div>
+            <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1566970037121-WBVPWBZAE2ZELF5ML20L/yangskitchen_gallery-04.png?format=300w" alt=""
+                class="w-[100%] md:w-[100%] lg:w-[75%] h-auto">
+        </div>
+    </div>
+  </div>
+
+  <div class="mt-20 m-10 mb-20">
+    <h1 class="text-center text-3xl md:text-4xl lg:text-3xl" style="font-family: 'Courier New', Courier, monospace;">© 2019 YANG’S KITCHEN</h1>
+  </div>
+
+  <footer class="mt-28 m-10 mb-16 lg:pl-20 lg:pr-20">
+    <h1 class="text-sm md:text-base lg:text-lg text-center text-balance font-medium">YANG'S KITCHEN 112 West Main Street, Alhambra, CA, 91801, United States 6262811035 hello@yangskitchenla.com</h1>
+  </footer>
+
+  
+    <script>
+      // JavaScript to toggle burger menu
+      document.getElementById('burger-menu').addEventListener('click', function() {
+        var menuLinks = document.getElementById('burger-menu-links');
+        if (menuLinks.classList.contains('show')) {
+          menuLinks.classList.remove('show');
+          menuLinks.classList.add('hide');
+          setTimeout(() => menuLinks.classList.remove('hide'), 500);
+        } else {
+          menuLinks.classList.add('show');
+        }
+      });
+  
+      // JavaScript for the slideshow
+      document.addEventListener("alpine:init", () => {
+      Alpine.data("imageSlider", () => ({
+        currentIndex: 1,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1684314843692-FPSM7KC5I990XZVPPJB5/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1684052283223-Z354HG5Y7K0NEA8P50UL/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1682718112704-DINDB4DMTWCEUYRMLB12/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1682287091581-MPORAIRG2OC5OOYM7MRA/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1681766910499-XUDFIYOL2D9THFP4P4U2/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1681459324923-2PR4A6CICFDUNOZCMQ68/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1678751764470-2EESEBZMH8IYH9EVRJ0L/image-asset.jpeg?format=750w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1678321617414-OZTMR05FU8G6Q5QF32IT/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1670433180806-XB5ED8YNU20YWSG2WHYA/image-asset.jpeg?format=1500w",
+          "https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1668566922182-IHT4DQZSIMBOVL3QMH7Q/image-asset.jpeg?format=1500w",
+        ],
+        previous() {
+          if (this.currentIndex > 1) {
+            this.currentIndex = this.currentIndex - 1;
+          }
+        },
+        forward() {
+          if (this.currentIndex < this.images.length) {
+            this.currentIndex = this.currentIndex + 1;
+          }
+        },
+      }));
+    });
+      </script>
+  
+</body>
+</html>

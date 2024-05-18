@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Hidden by default */
+    #burger-menu-links {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      width: 100%;
+      background-color: #bda95b;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    /* Animation for showing */
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    /* Animation for hiding */
+    @keyframes slideOut {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* Show the dropdown menu */
+    #burger-menu-links.show {
+      display: block;
+      animation: slideIn 0.5s forwards;
+    }
+
+    /* Hide the dropdown menu */
+    #burger-menu-links.hide {
+      display: block; /* Ensure the menu is visible before applying the animation */
+      animation: slideOut 0.5s forwards; /* Apply the slideOut animation */
+    }
+
+    /* Ensure the burger icon is visible during animation */
+    #burger-menu {
+      position: relative;
+      z-index: 11;
+    }
+  </style>
+
+</head>
+<body class="bg-[#fffefa] text-gray-800 overflow-x-hidden">
+
+  <header class="bg-[#fffefa] py-6">
+    <div class="flex justify-between items-center mx-6 md:mx-8 lg:mx-10">
+      <div class="flex-grow text-center lg:transform ml-[35%] md:ml-[35%] lg:ml-[40%]">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c42b91c697a9873ebf844b8/1564793209998-HT4V8J383MOR2UOKPEAE/YangsKitchen_Logo_DARK.png?format=1500w" 
+        alt="" class="w-[55%] md:w-[45%] lg:w-[40%] h-auto">
+      </div>
+      
+      <div class="block lg:hidden">
+        <button id="burger-menu" class="text-gray-800 focus:outline-none">
+          <i class="fa fa-bars text-3xl"></i>
+        </button>
+      </div>
+
+      <div id="nav-links" class="hidden lg:flex flex-col text-sm md:text-base lg:text-lg text-right space-y-2 ml-auto lg:transform lg:translate-x-[-50%] xl:translate-x-[-75%]">
+        <a href="./menu.html" class="text-gray-800 hover:underline whitespace-nowrap">1 VIEW OUR MENU</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a>
+        <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a>
+        </div>
+        <div>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a>
+          <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a>
+        </div>
+        <a href="#" class="text-gray-800 hover:underline underline whitespace-nowrap">8 CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hidden div component for burger menu -->
+  <div id="burger-menu-links" class="hidden absolute shadow-md px-4 mt-[-6%] right-0 p-10 pl-10 w-[100%] h-[100vh] bg-[#bda95b] transition-transform duration-300 transform translate-x-full">
+    <a href="./menu.html" class="text-gray-800 hover:underline whitespace-nowrap underline">1 VIEW OUR MENU</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">2 MAKE A RESERVATION (DINNER)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">3 JOIN THE WAITLIST (BRUNCH/LUNCH)</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">4 ORDER TAKEOUT</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">5 ORDER DELIVERY</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">6 PURCHASE A GIFT CARD</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">7 WINE LIST</a><br>
+    <a href="#" class="text-gray-800 hover:underline whitespace-nowrap">8 CONTACT US</a><br>
+  </div>
+
+  <h1 class="text-center text-lg md:text-2xl lg:text-3xl mt-20 font-semibold" style="font-family: 'Courier New', Courier, monospace;">CONTACT US</h1>
+
+  <p class="text-center text-sm md:text-base lg:text-lg mt-10">Please complete the form below.</p>
+
+  <div class="flex justify-center mt-10">
+    <div class="w-full max-w-[90%] md:max-w-[90%] lg:max-w-[55%]">
+      <form action="#" method="post" class="bg-white shadow-md border border-zinc-600  px-8 pt-6 pb-8 mb-4">
+        
+        <div class="flex mb-4 space-x-4">
+          <div class="w-full">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="firstname">
+              First Name
+            </label>
+            <input class="shadow appearance-none border border-zinc-600  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" placeholder="First Name">
+          </div>
+          <div class="w-full">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="lastname">
+              Last Name
+            </label>
+            <input class="shadow appearance-none border border-zinc-600  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            Email
+          </label>
+          <input class="shadow appearance-none border border-zinc-600  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="subject">
+            Subject
+          </label>
+          <input class="shadow appearance-none border border-zinc-600  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="subject" type="text" placeholder="Subject">
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+            Message
+          </label>
+          <textarea class="shadow appearance-none border border-zinc-600 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Your message here..."></textarea>
+        </div>
+        <div class="flex justify-center">
+            <button class="bg-white border-2 border-zinc-300 py-3 px-4 md:py-6 md:px-6 lg:py-6 lg:px-6 cursor-pointer hover:bg-zinc-500 hover:border-zinc-500 hover:text-white text-zinc-500 font-bold  focus:outline-none focus:shadow-outline w-auto md:w-auto lg:w-[25%] text-base md:text-lg lg:text-xl" type="button">
+              Submit
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="mt-28 m-10 mb-16 lg:pl-20 lg:pr-20">
+    <h1 class="text-sm md:text-base lg:text-lg text-center text-balance font-medium">YANG'S KITCHEN 112 West Main Street, Alhambra, CA, 91801, United States 6262811035 hello@yangskitchenla.com</h1>
+  </footer>
+
+  <script>
+    // JavaScript to toggle burger menu
+    document.getElementById('burger-menu').addEventListener('click', function() {
+        var menuLinks = document.getElementById('burger-menu-links');
+        if (menuLinks.classList.contains('show')) {
+          menuLinks.classList.remove('show');
+          menuLinks.classList.add('hide');
+          setTimeout(() => menuLinks.classList.remove('hide'), 500);
+        } else {
+          menuLinks.classList.add('show');
+        }
+      });
+  </script>
+    
+</body>
+</html>
